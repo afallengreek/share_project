@@ -1,0 +1,28 @@
+{
+  "name": "share_project",
+  "version": "1.0.0",
+  "description": "doc for share_project",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "vuepress dev docs",
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "deploy": "sh build.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afallengreek/share_project"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afallengreek/share_project"
+  },
+  "homepage": "https://github.com/afallengreek/share_project#readme",
+  "devDependencies": {
+    "vuepress": "^1.0.0-alpha.44"
+  }
+}
