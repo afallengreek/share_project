@@ -1,115 +1,66 @@
-# 长城项目交接概述
+# 商旅对账详情
 
-长城项目交接包括付款，收款，资产，商旅对账模块。将会从目录，逻辑以及技术三个方面来描述。
-
-## 付款模块
-`项目路径：bdm-web/src/components/pm`
-
-  主要功能是为客户，供应商，以及本部相互付款的申请单。
-  包含主要内容如下:
-  ::: tip 主数据
-        1.付款性质
-      
-        2.付款挂账池
-      
-        3.税金行项目 
-      
-        4.付款记账配置
-  
-  :::
-  ::: tip 付款申请单
-        1.人民币付款
-        
-        2.批量付款
-        
-        3.海外付款 
-          信用证开证和信用证付款都是海外付款的衍生单子，逻辑共用一套
-          
-        5.信用证开证付款
-          信用证开证付款由海外付款选择信用证付款选项衍生
-        
-        6.信用证付款
-          信用证付款由信用证开证付款申请单衍生，创单时通过搜索信用证编号创建
-        
-        7.特殊付款
-  :::
- 
-## 收款模块   
-`项目路径：bdm-web/src/components/cm`
-
-  ::: tip 主数据
-        1.收款款项配置
-      
-        2.收款记账配置
-      
-  :::
-  ::: tip 收款认领
-        1.收款通知单
-        
-        2.收款认领明细
-          收款通知单收款成功后回执信息
-  :::
- 
-## 资产模块   
-`项目路径：bdm-web/src/components/am`
-
- ::: tip 主数据
-        1.数量单位
-      
-        2.资产流程动态节点配置
-        
-        3.调拨处置接口控制
-      
-        4.资产减值控制
-        
-        5.监管类型
-      
-        6.资产业务类型
-        
-        7.资产事务类型
-      
-        8.资产类型
-        
-        9.折旧年限
-        
-        10.资产费用项
-      
-        11.资产记账配置
-        
-        12.现金流配置
-      
-  :::
-  ::: tip 资产申请单
-        1.资产采购单
-        
-        2.在建工程转固单
-        
-        3.研发转无形资产单
-        
-        4.资产暂估转固单
-        
-        5.资产来票冲暂估单
-          资产来票冲暂估单由资产暂估转固单为基础创建
-        
-        6.资产转移单
-        
-        7.资产调拨单
-        
-        8.资产处置单
-        
-        9.资产清理报告单
-          清理报告单由处置单为基础创建
-        
-        10.资产改扩建单
-        
-  :::
-## 商旅对账模块  
 `项目路径：act-web/src/components/journeyTrip`
 
-  ::: tip 收款认领
-        1.商旅对账
-        
-        2.商旅结算
-          先商旅对账核对好金额，结算的时候付款
-  :::
-
+## 主要内容
+::: tip 目录结构
+      /journeyTrip
+          /journeyConfirm -->商旅对账
+          /journeySettle -->商旅结算
+::: 
+::: tip 商旅对账目录结构
+               /journeySettle
+                   /constData 固定逻辑数据
+                       /columns 列表头展示数据
+                       /settleJsonData 结算测试假数据
+                   /listView
+                       /orderList 商旅对账列表
+                           /ConfirmList 商旅对账列表
+                           /AddSyncDateModal 同步消费者明细功能
+                       /ConfirmRequest 商旅对账主页面，对接商旅对账列表（包含我的草稿和已提交结算两个tab）
+                       /FeatchUtilsCustom 自定义axios重写，主要改写超时时间（对syncComsumptionsByDate同步数据这个方法使用）
+                       /SetInitialDataModal 通过条件创建对账单
+                       /SyncAndImportCheckBillModal 同步对账函功能
+                   /requestApply 对账申请单
+                        /request 主申请内容目录
+                            /JourneyConfirmMainForm 对账申请单主界面
+                            /OrderHeadForm 对账申请单头部内容
+                            /ConfirmDetailCard 对账明细信息卡片（包含宾馆，火车，飞机），分为三个领域 对账成功 对账函差异 消费明细差异
+                            /DrawerCard 本次对账移除数据
+                            /JsDetailCard 对账单明细
+                        /OrderHead 对账申请单头信息，不是头部内容
+               /journeySettle -->商旅结算
+:::
+::: tip 商旅结算目录结构
+               /journeySettle
+                   /approve 商旅结算
+                         /ApproveJsForTax 商旅结算审批修改税金行界面
+                         /ApproveJsRequest 商旅结算审批明细界面
+                         /ApproveJsRequestEdit 商旅结算审批修改界面
+                         /ApproveJsRequestPage 商旅结算外接明细界面
+                         /JsRequestDetailPage 商旅结算凭证通过行id查看单据界面
+                    /constData 固定逻辑数据
+                          /invoiceDetailCol 不合规发票行配置
+                          /paymentDetailCol 支付信息行配置
+                          /SettleDetailCol 结算卡片明细配置
+                   /listView
+                          /orderList 商旅结算列表
+                                /SettleList 商旅结算列表
+                          /SettleRequest 商旅结算主页面，对接商旅结算列表（包含 我的草稿 和 流程处理中 和 所有单据 三个个tab）
+                   /requestApply 结算申请单
+                          /request 主申请内容目录
+                                /JourneySettleMainForm 结算申请单主界面
+                                
+                                结算申请单主界面包含内容
+                                /OrderHeadForm 对账申请单头部内容
+                                /TaxRate 税金行进项发票信息
+                                /SettleDetailCard 对账明细卡片
+                                
+                                对账明细卡片包含以下内容
+                                /NonCompliantInvoiceDraw  不合规发票登记
+                                /DrawerCard 分摊明细
+                                /FeeDetailCard 商旅结算单条明细卡片
+                                /PaymentDetailCard 支付信息
+                          /OrderHead 对账申请单头信息，不是头部内容
+               /journeySettle -->商旅结算
+:::

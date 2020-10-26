@@ -22,12 +22,12 @@
              /ApprovePmRequestEditPage 付款单外接编辑页面
              /ApprovePmRequestForBill  付款单审批编辑发票页面
              /ApprovePmRequestForBookBalance 付款单审批编辑账面余额页面
-             /ApprovePmRequestForBookBalance 付款单审批编辑账面余额和扣缴税金页面
+             /ApprovePmRequestForBookBalanceAndCostMoney 付款单审批编辑账面余额和扣缴税金页面
              /ApprovePmRequestForContract 付款单审批编辑合同信息页面
              /ApprovePmRequestForCostMoney 付款单审批编辑扣缴税金页面
              /ApprovePmRequestPage 付款单审批编辑页面
-             /ApprovePmRequestPageForCreditEditPage 付款单审批编辑页面 （为信用证付款定制）
-             /ApprovePmRequestPageForCreditPage 付款单审批明细页面 （为信用证付款定制）
+             /ApprovePmRequestPageForCreditEditPage 付款单外接编辑页面 （为信用证付款定制）
+             /ApprovePmRequestPageForCreditPage 付款单外接明细页面 （为信用证付款定制）
              /ApprovePmRequestPageForCreditEditPage 付款单外接编辑页面 （为信用证付款定制）
              /ApprovePmRequestPageForCreditPage 付款单外接明细页面 （为信用证付款定制）
              /ApprovePmRequestPageForCreditPage 凭证查看申请单，处理行id找到单据id查找到单据 （兼容信用证付款）
